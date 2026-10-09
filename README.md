@@ -2,16 +2,14 @@
 
 ## Student Details
 
-- **Full Name:** `<Enter name>`
-- **CCID:** `<Enter ccid>`
+- **Full Name:** `Chitkarsh Rathi`
+- **CCID:** `chitkars`
 
 ## References and Resources
-
-List any resources used here, or simply put `N/A` if not applicable.
+    https://ualberta-cmput301.github.io/labs/slides/Firestore.pdf
+    https://ualberta-cmput301.github.io/labs/slides/2026-Lab5FInteg.pdf
+    CMPUT 301 Lab 3 Slides and Code
+    
 
 ## Verbal Collaboration
-
-| Student Name | CCID      |
-| ------------ | --------- |
-| `student`    | `student` |
-| `<Add more>` | `<CCID>`  |
+-'N/A'
