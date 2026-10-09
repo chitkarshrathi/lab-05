@@ -14,6 +14,8 @@ import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.material3.Button
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.HorizontalDivider
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -27,12 +29,16 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.listycity.ui.theme.ListyCityTheme
 
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Delete
+
 @Composable
 fun CityListScreen(
     cities: List<City>,
     onAddCity: (City) -> Unit,
     onUpdateCity: (City, City) -> Unit,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    onDeleteCity: (City) -> Unit = {}
 ) {
     var newCityName by remember { mutableStateOf("") }
     var newProvinceName by remember { mutableStateOf("") }
@@ -104,6 +110,7 @@ fun CityListScreen(
                 }
             }
         }
+
         if (selectedCity != null) {
             Row(
                 modifier = Modifier
@@ -166,6 +173,10 @@ fun CityListScreen(
                         selectedCity = city
                         editedCityName = city.name
                         editedProvinceName = city.province
+                    },
+
+                    onDeleteCity = {
+                        onDeleteCity(city)
                     }
                 )
                 if (index < cities.lastIndex) {
@@ -180,7 +191,8 @@ fun CityListScreen(
 @Composable
 fun CityRow(
     city: City,
-    onClick: () -> Unit
+    onClick: () -> Unit,
+    onDeleteCity: () -> Unit
 ) {
     Row(
         modifier = Modifier
@@ -199,6 +211,13 @@ fun CityRow(
             fontSize = 30.sp,
             modifier = Modifier.weight(1f)
         )
+
+        IconButton(onClick = onDeleteCity) {
+            Icon(
+                imageVector = Icons.Default.Delete,
+                contentDescription = "Delete"
+            )
+        }
     }
 }
 
@@ -213,7 +232,8 @@ fun CityListScreenPreview() {
                 City("Calgary", "AB")
             ),
             onAddCity = {},
-            onUpdateCity = { _, _ -> }
+            onUpdateCity = { _, _ -> },
+            onDeleteCity = {}
         )
     }
 }
